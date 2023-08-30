@@ -27,6 +27,14 @@ class ApiSourceImpl @Inject constructor(
         return handleResponse(service.getProductDetails(id))
     }
 
+    override suspend fun searchProducts(query: String): Resource<ProductDTO> {
+        return handleResponse(service.searchProducts(query))
+    }
+
+    override suspend fun getAllProducts(): Resource<ProductDTO> {
+        return handleResponse(service.getAllProducts())
+    }
+
     private fun <T : Any> handleResponse(response: Response<T>) : Resource<T>{
         return try {
             if(response.isSuccessful){

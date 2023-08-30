@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -48,6 +49,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.bashirli.techstorecompose.R
+import com.bashirli.techstorecompose.common.base.BaseLazyItem
 import com.bashirli.techstorecompose.common.navigation.Screen
 import com.bashirli.techstorecompose.common.util.Loading
 import com.bashirli.techstorecompose.common.util.fontFamily
@@ -153,74 +155,11 @@ fun CategoryItems(
 ){
 
     LazyRow(){
-        data.forEach {product->
-            item {
-                Box(
-                    modifier = modifier
-                        .padding(horizontal = 10.dp)
-                        .clickable {
-                            product.id?.let {
-                                navHostController.navigate(Screen.DetailsScreen.withArgs(it))
-                            }
-                        },
-                    contentAlignment = Alignment.TopCenter,
-                    ){
 
-
-                    Card(
-                        modifier = modifier
-                            .padding(top = 50.dp)
-                            .width(220.dp),
-                        shape = RoundedCornerShape(20.dp),
-                        colors = CardDefaults.cardColors(
-                            containerColor = Color.White
-                        )
-                    ) {
-                        Spacer(modifier = modifier.size(145.dp))
-                        Text(
-                            modifier = modifier.fillMaxWidth(),
-                            text = product.title?:"",
-                            fontFamily = fontFamily,
-                            fontWeight = FontWeight.Bold,
-                            color = Color.Black,
-                            fontSize = 22.sp,
-                            textAlign = TextAlign.Center
-                            )
-                        Text(
-                            modifier = modifier.fillMaxWidth(),
-                            text = ("$" + product.price?.toString()) ?: "",
-                            color = Pink,
-                            fontFamily = fontFamily,
-                            fontWeight = FontWeight.Normal,
-                            fontSize = 17.sp,
-                            textAlign = TextAlign.Center
-                            )
-                        Spacer(modifier = modifier.size(40.dp))
-                    }
-
-                    Card(
-                        modifier = modifier
-                            .size(160.dp)
-
-                        ,
-                        shape = RoundedCornerShape(80.dp)
-                    ) {
-                        Box(modifier = modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center
-                        ){
-                            AsyncImage(
-                                modifier= modifier.fillMaxSize(),
-                                contentScale = ContentScale.Fit,
-                                model = product.images.first(),
-                                contentDescription = null
-                            )
-                        }
-                    }
-
-
-                }
+            items(data){
+                BaseLazyItem(product = it, navHostController = navHostController)
             }
-        }
+
     }
 
 }

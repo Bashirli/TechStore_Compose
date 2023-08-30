@@ -66,6 +66,12 @@ fun changeVisibility(navBackStackEntry: NavBackStackEntry?) : Boolean{
        Screen.SplashScreen.route->{
            false
        }
+       Screen.DetailsScreen.route + "/{id}"->{
+           false
+       }
+       Screen.SearchScreen.route->{
+           false
+       }
        else->{
            true
        }

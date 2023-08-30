@@ -14,6 +14,8 @@ sealed class Screen(val route :String) {
 
     object DetailsScreen : Screen("DetailsScreen")
 
+    object SearchScreen : Screen("SearchScreen")
+
     fun withArgs(vararg args:Int):String{
         return buildString{
             append(route)

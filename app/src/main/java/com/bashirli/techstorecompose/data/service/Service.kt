@@ -6,6 +6,7 @@ import com.bashirli.techstorecompose.data.dto.products.ProductDTO
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface Service {
 
@@ -18,4 +19,9 @@ interface Service {
     @GET("products/{id}")
     suspend fun getProductDetails(@Path("id") id:Int) : Response<Product>
 
+    @GET("products/search")
+    suspend fun searchProducts(@Query("q") query:String) : Response<ProductDTO>
+
+    @GET("products")
+    suspend fun getAllProducts() : Response<ProductDTO>
 }

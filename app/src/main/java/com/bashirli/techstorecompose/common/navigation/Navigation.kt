@@ -6,6 +6,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.bashirli.techstorecompose.ui.screen.search.SearchScreen
 import com.bashirli.techstorecompose.ui.screen.cart.CartScreen
 import com.bashirli.techstorecompose.ui.screen.details.DetailsScreen
 import com.bashirli.techstorecompose.ui.screen.favorite.FavoriteScreen
@@ -15,7 +16,7 @@ import com.bashirli.techstorecompose.ui.screen.splash.SplashScreen
 
 @Composable
 fun Navigation(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = Screen.HomeScreen.route){
+    NavHost(navController = navController, startDestination = Screen.SplashScreen.route){
         composable(route = Screen.SplashScreen.route){
             SplashScreen(navController = navController)
         }
@@ -31,6 +32,10 @@ fun Navigation(navController: NavHostController) {
         composable(route = Screen.ProfileScreen.route){
             ProfileScreen()
         }
+        composable(route = Screen.SearchScreen.route){
+            SearchScreen(navController = navController)
+        }
+
         composable(
             route = Screen.DetailsScreen.route + "/{id}",
             arguments = listOf(

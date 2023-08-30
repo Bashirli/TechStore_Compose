@@ -9,4 +9,5 @@ class GetProductsUseCase @Inject constructor(
 
     suspend fun getCategoryProducts(category:String) = repository.getCategoryProducts(category)
 
+    suspend fun getAllProducts() = repository.getAllProducts()
 }

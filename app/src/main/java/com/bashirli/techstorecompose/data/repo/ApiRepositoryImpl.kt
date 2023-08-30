@@ -60,4 +60,32 @@ class ApiRepositoryImpl @Inject constructor(
 
     }
 
+    override suspend fun searchProducts(query: String): Flow<Resource<ProductModel>> = flow {
+        emit(Resource.Loading)
+        val response = apiSource.searchProducts(query)
+        when(response){
+            is Resource.Error -> {
+                emit(Resource.Error(response.message))
+            }
+            Resource.Loading -> Unit
+            is Resource.Success -> {
+                emit(Resource.Success(response.result?.toProductModel()))
+            }
+        }
+    }
+
+    override suspend fun getAllProducts(): Flow<Resource<ProductModel>> = flow {
+        emit(Resource.Loading)
+        val response = apiSource.getAllProducts()
+        when(response){
+            is Resource.Error -> {
+                emit(Resource.Error(response.message))
+            }
+            Resource.Loading -> Unit
+            is Resource.Success -> {
+                emit(Resource.Success(response.result?.toProductModel()))
+            }
+        }
+    }
+
 }

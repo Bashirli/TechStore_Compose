@@ -220,7 +220,7 @@ fun ProductDetails(
                               icon = {
                                   Icon(painter = painterResource(id = R.drawable.purple),
                                       contentDescription = null,
-                                      tint = SkyBlue
+                                      tint = Color.Unspecified
 
                                       )
                               },
@@ -239,9 +239,10 @@ fun ProductDetails(
                                       color = Color.Black)
                               },
                               icon = {
-                                  Icon(painter = painterResource(id = R.drawable.rose_gold),
+                                  Icon(
+                                      painter = painterResource(id = R.drawable.rose_gold),
                                       contentDescription = null,
-                                      tint = RoseGold
+                                      tint = Color.Unspecified
                                       )
                               },
                               modifier = modifier.padding(horizontal = 5.dp)
@@ -263,15 +264,13 @@ fun ProductDetails(
                                   Icon(
                                       painter = painterResource(id = R.drawable.green),
                                       contentDescription = null,
-                                        tint = Green
+                                        tint = Color.Unspecified
                                       )
                               },
                               modifier = modifier.padding(horizontal = 5.dp)
                           )
 
-
-
-
+                          
                       }
 
                       Spacer(modifier = modifier.size(40.dp))

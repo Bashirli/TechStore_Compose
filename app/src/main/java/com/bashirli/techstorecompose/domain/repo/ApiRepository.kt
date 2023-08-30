@@ -15,4 +15,8 @@ interface ApiRepository {
 
     suspend fun getProductDetails(id:Int) : Flow<Resource<ProductListModel>>
 
+    suspend fun searchProducts(query:String) : Flow<Resource<ProductModel>>
+
+    suspend fun getAllProducts() : Flow<Resource<ProductModel>>
+
 }

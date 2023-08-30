@@ -13,4 +13,8 @@ interface ApiSource {
     suspend fun getCategoryProducts(category:String):Resource<ProductDTO>
 
     suspend fun getProductDetails(id:Int) : Resource<Product>
+
+    suspend fun searchProducts(query:String) : Resource<ProductDTO>
+
+    suspend fun getAllProducts():Resource<ProductDTO>
 }

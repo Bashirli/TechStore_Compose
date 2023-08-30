@@ -17,4 +17,6 @@
     <string name="fullView">Full description</string>
     <string name="total">Total</string>
     <string name="addToBasket">Add to basket</string>
+    <string name="found">Found</string>
+    <string name="results">Results</string>
 </resources>
